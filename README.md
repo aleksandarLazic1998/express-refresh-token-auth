@@ -17,7 +17,7 @@
     ```
 4.  And finally run the server with command:
     ```
-   npm run start:nodemon
+    npm run start:nodemon
     ```
 
 ## Technologies:
