@@ -53,8 +53,6 @@ export const loginUser = async (req: Request, res: Response) => {
 			newRefeshToken,
 		];
 
-		res.clearCookie("refresh-token", COOKIE_OPTIONS);
-
 		/* Reuse Detection Case: User logs in and never logs out, then refresh token is stolen  */
 		const matchingUser = await UsersModel.findOne({
 			refreshToken: refreshTokenCookie,
@@ -65,6 +63,8 @@ export const loginUser = async (req: Request, res: Response) => {
 				.status(403)
 				.json({ errors: [{ msg: "Attempted to login as someone else." }] });
 		}
+
+		res.clearCookie("refresh-token", COOKIE_OPTIONS);
 	}
 
 	foundUser.refreshToken = listOfRefreshTokens;
