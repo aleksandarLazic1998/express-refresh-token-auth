@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
 
-import { responseWithMessage } from "../../config/responseWithMessage";
 import UsersModel from "../../models/users";
 import { ENV_CONST } from "../../constants/env";
 import { IUser } from "../../typescript/interfaces/User";
@@ -12,21 +11,13 @@ export const registerUser = async (req: Request, res: Response) => {
 
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
-		return responseWithMessage({
-			res,
-			status: 422,
-			messages: errors.array(),
-			type: "error",
-		});
+		return res.status(422).json({ errors: errors.array() });
 	}
 
 	const foundUser = await UsersModel.findOne({ email }).exec();
 	if (foundUser) {
-		return responseWithMessage({
-			res,
-			status: 409,
-			messages: [{ msg: `User with email: ${foundUser} arleady exist.` }],
-			type: "error",
+		return res.status(409).json({
+			errors: [{ msg: `User with email: ${foundUser} arleady exist.` }],
 		});
 	}
 
@@ -56,10 +47,8 @@ export const registerUser = async (req: Request, res: Response) => {
 	}
 
 	await UsersModel.create(newUser);
-	return responseWithMessage({
-		res,
-		status: 201,
-		messages: `Successfully created user with email:${newUser.email}`,
-		type: "sucess",
+
+	return res.status(201).json({
+		message: `Successfully created user with email:${newUser.email}`,
 	});
 };
