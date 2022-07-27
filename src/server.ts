@@ -3,8 +3,6 @@ config();
 
 import { createServer } from "http";
 import app from "./app";
+import { connectToDB } from "./config/connectToDB";
 
-const PORT = process.env.PORT || 3006;
-const server = createServer(app);
-
-server.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+connectToDB(createServer(app));
