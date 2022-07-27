@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import ROUTES from "./routers/routes";
 import AuthRouter from "./routers/auth";
 import corsOptions from "./config/corsOptions";
+import { jwtValidator } from "./middlewares/jwtValidator";
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(cookieParser());
 app.use(ROUTES.AUTH.URL, AuthRouter);
 
 /* Private Routes */
+app.use(jwtValidator);
 
 export default app;
