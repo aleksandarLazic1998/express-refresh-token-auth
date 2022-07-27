@@ -3,8 +3,10 @@ config();
 
 import { createServer } from "http";
 import app from "./app";
+import { ENV_CONST } from "./constants/env";
 
-const PORT = process.env.PORT || 3006;
 const server = createServer(app);
 
-server.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+server.listen(ENV_CONST.PORT, () =>
+	console.log(`Listening on port: ${ENV_CONST.PORT}`)
+);
