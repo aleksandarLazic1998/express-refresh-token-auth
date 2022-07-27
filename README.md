@@ -8,7 +8,7 @@
 
 1.  Open the terminal and clone repository with command:,
     ```
-    git clone https://github.com/aleksandarLazic1998/bank-api.git
+    git clone https://github.com/aleksandarLazic1998/express-refresh-token-auth.git
     ```
 2.  Navigate in Terminal to folder where you clone the repository,
 3.  Install all dependencies with command:
