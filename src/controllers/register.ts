@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
-
-import UsersModel from "../../models/users";
-import { ENV_CONST } from "../../constants/env";
-import { IUser } from "../../typescript/interfaces/User";
+import UsersModel from "../models/users";
+import { IUser } from "../typescript/interfaces/User";
+import { ENV_CONST } from "../constants/env";
 
 export const registerUser = async (req: Request, res: Response) => {
 	const { email, password, isManager, isAdmin } = req.body;

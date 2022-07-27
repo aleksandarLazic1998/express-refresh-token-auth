@@ -7,6 +7,7 @@ import ROUTES from "./routers/routes";
 import AuthRouter from "./routers/auth";
 import corsOptions from "./config/corsOptions";
 import { jwtValidator } from "./middlewares/jwtValidator";
+import LogoutRouter from "./routers/logout";
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use(ROUTES.AUTH.URL, AuthRouter);
 
 /* Private Routes */
 app.use(jwtValidator);
+app.use(ROUTES.AUTH.URL, LogoutRouter);
 
 export default app;
