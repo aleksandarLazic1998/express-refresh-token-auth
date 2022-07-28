@@ -10,6 +10,9 @@ const ROUTES = {
 	REFRESH_TOKEN: {
 		URL: `${BASIC_API_ROUTE}/refresh-token`,
 	},
+	EMPLOYEES: {
+		URL: `${BASIC_API_ROUTE}/employees`,
+	},
 };
 
 export default ROUTES;
