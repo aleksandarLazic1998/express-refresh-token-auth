@@ -8,6 +8,7 @@ import AuthRouter from "./routers/auth";
 import corsOptions from "./config/corsOptions";
 import { jwtValidator } from "./middlewares/jwtValidator";
 import LogoutRouter from "./routers/logout";
+import RefreshTokenRouter from "./routers/refreshToken";
 
 const app = express();
 
@@ -22,5 +23,6 @@ app.use(ROUTES.AUTH.URL, AuthRouter);
 /* Private Routes */
 app.use(jwtValidator);
 app.use(ROUTES.AUTH.URL, LogoutRouter);
+app.use(ROUTES.REFRESH_TOKEN.URL, RefreshTokenRouter);
 
 export default app;
