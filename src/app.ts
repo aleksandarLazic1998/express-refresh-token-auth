@@ -9,6 +9,7 @@ import corsOptions from "./config/corsOptions";
 import { jwtValidator } from "./middlewares/jwtValidator";
 import LogoutRouter from "./routers/logout";
 import RefreshTokenRouter from "./routers/refreshToken";
+import EmployeesRouter from "./routers/employee";
 
 const app = express();
 
@@ -19,10 +20,11 @@ app.use(cookieParser());
 
 /* Public Routes */
 app.use(ROUTES.AUTH.URL, AuthRouter);
+app.use(ROUTES.REFRESH_TOKEN.URL, RefreshTokenRouter);
+app.use(ROUTES.AUTH.URL, LogoutRouter);
 
 /* Private Routes */
 app.use(jwtValidator);
-app.use(ROUTES.AUTH.URL, LogoutRouter);
-app.use(ROUTES.REFRESH_TOKEN.URL, RefreshTokenRouter);
+app.use(ROUTES.EMPLOYEES.URL, EmployeesRouter);
 
 export default app;
