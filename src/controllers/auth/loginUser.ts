@@ -36,7 +36,7 @@ export const loginUser = async (req: Request, res: Response) => {
 	const accessToken = await JWT.sign(
 		{ userInfo: { email: foundUser.email, roles: userRoles } },
 		ENV_CONST.ACCESS_TOKEN_SECRET,
-		{ expiresIn: "1" }
+		{ expiresIn: "1h" }
 	);
 
 	const newRefeshToken = await JWT.sign(
