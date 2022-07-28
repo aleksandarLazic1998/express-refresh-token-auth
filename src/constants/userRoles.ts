@@ -1,7 +1,5 @@
 export const USER_ROLES = {
-	Admin: process.env.ADMIN_ROLE || 0,
-	Manager: process.env.MANAGER_ROLE || 0,
-	User: process.env.USER_ROLE || 0,
+	Admin: process.env.ADMIN_ROLE,
+	Manager: process.env.MANAGER_ROLE,
+	User: process.env.USER_ROLE,
 };
-
-export const isRoleAccepted = Object.values(USER_ROLES);
